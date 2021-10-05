@@ -7,6 +7,14 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+  #root {
+    --background: #0E1117;
+    --text: #C9D1D9;
+    --container: #161B22;
+    --success: #238636;
+    --danger: #DA3633;
+  }
+
   body,
   input,
   textarea,
