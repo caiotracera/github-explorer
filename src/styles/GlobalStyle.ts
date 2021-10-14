@@ -8,7 +8,7 @@ export default createGlobalStyle`
   }
 
   #root {
-    --background: #0E1117;
+    --background: #0e1117;
     --text: #C9D1D9;
     --container: #161B22;
     --header: #080a0e;
@@ -17,9 +17,6 @@ export default createGlobalStyle`
   }
 
   body {
-    height: 100vh;
-    width: 100vw;
-    background: #0E1117;
     color: #C9D1D9;
   }
 
@@ -48,5 +45,7 @@ export default createGlobalStyle`
 
     width: 100vw;
     height: 100vh;
+
+    background: #0e1117;
   }
 `;

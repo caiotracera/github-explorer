@@ -51,13 +51,3 @@ export const SearchButton = styled.button`
   border: 0;
   border-radius: 0.25rem;
 `;
-
-export const Footer = styled.footer`
-  margin-top: 2rem;
-  font-size: 11px;
-  color: var(--text);
-
-  a {
-    text-decoration: underline;
-  }
-`;
