@@ -1,17 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  width: 100vw;
-  height: 100vh;
-
-  background: var(--background);
-  color: var(--text);
-
   h1 {
     font-family: 'Roboto';
     font-style: normal;

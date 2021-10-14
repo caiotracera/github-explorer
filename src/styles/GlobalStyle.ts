@@ -11,8 +11,16 @@ export default createGlobalStyle`
     --background: #0E1117;
     --text: #C9D1D9;
     --container: #161B22;
+    --header: #080a0e;
     --success: #238636;
     --danger: #DA3633;
+  }
+
+  body {
+    height: 100vh;
+    width: 100vw;
+    background: #0E1117;
+    color: #C9D1D9;
   }
 
   body,
@@ -30,5 +38,15 @@ export default createGlobalStyle`
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: 100vh;
   }
 `;

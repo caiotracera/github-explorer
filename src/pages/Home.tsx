@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
 
 import { ReactComponent as GitHub } from '../assets/images/github.svg';
 import { Input } from '../components/Input';
@@ -21,10 +22,13 @@ export function Home() {
   const [error, setError] = useState('');
   const { handleSubmit, register } = useForm();
 
+  const history = useHistory();
+
   async function onSubmit({ username }: SearchFormData) {
     try {
-      const { data } = await api.get(`/users/${username}`);
+      await api.get(`/users/${username}`);
       setError('');
+      history.push(`/users/${username}`);
     } catch (e: any) {
       if (e.response.status === 404) {
         setError('User not found');
@@ -36,7 +40,7 @@ export function Home() {
   }
 
   return (
-    <Container>
+    <Container className="container">
       <GitHub />
       <h1>Github Explorer</h1>
       <SearchContainer onSubmit={handleSubmit(onSubmit)}>
