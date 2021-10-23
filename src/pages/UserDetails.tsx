@@ -1,10 +1,12 @@
-import { useParams, useHistory } from 'react-router-dom';
-import { FiChevronLeft, FiGlobe } from 'react-icons/fi';
-
 import { useEffect, useState } from 'react';
-import { Container, Content } from '../styles/pages/UserDetails';
+import { useHistory, useParams } from 'react-router-dom';
+import { FiBook, FiChevronLeft, FiGlobe, FiUsers } from 'react-icons/fi';
+
 import { api } from '../services/api';
+import { UserMenuItem } from '../components/UserMenuItem';
 import { Footer } from '../components/Footer';
+
+import { Container, Content, UserMenu } from '../styles/pages/UserDetails';
 
 interface ParamsProps {
   username: string;
@@ -30,8 +32,6 @@ export function UserDetails() {
     api.get(`/users/${username}`).then(({ data }) => setUser(data));
   }, [username]);
 
-  console.log(user);
-
   return (
     <div className="container">
       <Container>
@@ -49,6 +49,22 @@ export function UserDetails() {
         <Content>
           <h1>{user?.name}</h1>
           <p>{user?.bio}</p>
+          <UserMenu>
+            <UserMenuItem
+              Icon={FiBook}
+              text={`${user?.public_repos} repositories`}
+            />
+
+            <UserMenuItem
+              Icon={FiUsers}
+              text={`${user?.followers} followers`}
+            />
+
+            <UserMenuItem
+              Icon={FiUsers}
+              text={`${user?.following} following`}
+            />
+          </UserMenu>
         </Content>
       </Container>
       <Footer />
