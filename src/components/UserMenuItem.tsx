@@ -5,11 +5,12 @@ import { Container } from '../styles/components/UserMenuItem';
 interface UserMenuItemProps {
   Icon: IconType;
   text: string;
+  onClick?: () => void;
 }
 
-export function UserMenuItem({ Icon, text }: UserMenuItemProps) {
+export function UserMenuItem({ Icon, text, onClick }: UserMenuItemProps) {
   return (
-    <Container>
+    <Container onClick={onClick}>
       <Icon size={20} />
       {text}
     </Container>

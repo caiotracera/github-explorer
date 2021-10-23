@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
-import { FiBook, FiChevronLeft, FiGlobe, FiUsers } from 'react-icons/fi';
+import { Route, Switch, useHistory, useParams } from 'react-router-dom';
+import { FiChevronLeft, FiGlobe } from 'react-icons/fi';
 
 import { api } from '../services/api';
-import { UserMenuItem } from '../components/UserMenuItem';
 import { Footer } from '../components/Footer';
+import { UserDetails } from '../components/UserDetails';
 
-import { Container, Content, UserMenu } from '../styles/pages/UserDetails';
+import { Container, Content } from '../styles/pages/User';
 
 interface ParamsProps {
   username: string;
@@ -23,13 +23,15 @@ interface UserProps {
   html_url: string;
 }
 
-export function UserDetails() {
+export function User() {
   const { username } = useParams<ParamsProps>();
   const history = useHistory();
   const [user, setUser] = useState<UserProps>();
 
   useEffect(() => {
-    api.get(`/users/${username}`).then(({ data }) => setUser(data));
+    api.get(`/users/${username}`).then(({ data }) => {
+      setUser(data);
+    });
   }, [username]);
 
   return (
@@ -49,22 +51,12 @@ export function UserDetails() {
         <Content>
           <h1>{user?.name}</h1>
           <p>{user?.bio}</p>
-          <UserMenu>
-            <UserMenuItem
-              Icon={FiBook}
-              text={`${user?.public_repos} repositories`}
-            />
 
-            <UserMenuItem
-              Icon={FiUsers}
-              text={`${user?.followers} followers`}
-            />
-
-            <UserMenuItem
-              Icon={FiUsers}
-              text={`${user?.following} following`}
-            />
-          </UserMenu>
+          <Switch>
+            <Route exact path={`/users/${username}`}>
+              {user && <UserDetails user={user as UserProps} />}
+            </Route>
+          </Switch>
         </Content>
       </Container>
       <Footer />
