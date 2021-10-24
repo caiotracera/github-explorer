@@ -7,6 +7,7 @@ import { Footer } from '../components/Footer';
 import { UserDetails } from '../components/UserDetails';
 
 import { Container, Content } from '../styles/pages/User';
+import { UserRepos } from '../components/UserRepos';
 
 interface ParamsProps {
   username: string;
@@ -55,6 +56,9 @@ export function User() {
           <Switch>
             <Route exact path={`/users/${username}`}>
               {user && <UserDetails user={user as UserProps} />}
+            </Route>
+            <Route path={`/users/${username}/repos`}>
+              {user && <UserRepos username={user.login} />}
             </Route>
           </Switch>
         </Content>
