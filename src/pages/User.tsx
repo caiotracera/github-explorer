@@ -69,6 +69,9 @@ export function User() {
             <Route path={`/users/${username}/followers`}>
               {user && <UserList endpoint={`/users/${user.login}/followers`} />}
             </Route>
+            <Route path={`/users/${username}/following`}>
+              {user && <UserList endpoint={`/users/${user.login}/following`} />}
+            </Route>
           </Switch>
         </Content>
       </Container>
