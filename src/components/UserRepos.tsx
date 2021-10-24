@@ -75,9 +75,10 @@ export function UserRepos({ username }: IUserReposProps) {
         <LoadingContainer>
           <Loader
             type="MutatingDots"
-            color="#00BFFF"
             height={100}
             width={100}
+            color="var(--text)"
+            secondaryColor="var(--text)"
           />
         </LoadingContainer>
       )}
