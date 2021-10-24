@@ -4,7 +4,6 @@ import { FiLink } from 'react-icons/fi';
 import { api } from '../services/api';
 
 import { Container, ListItem } from '../styles/components/UserList';
-import 'react-virtualized/styles.css';
 
 interface IUserListProps {
   endpoint: string;
