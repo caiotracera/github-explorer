@@ -8,6 +8,7 @@ import { UserDetails } from '../components/UserDetails';
 
 import { Container, Content } from '../styles/pages/User';
 import { UserRepos } from '../components/UserRepos';
+import { UserList } from '../components/UserList';
 
 interface ParamsProps {
   username: string;
@@ -64,6 +65,9 @@ export function User() {
             </Route>
             <Route path={`/users/${username}/repos`}>
               {user && <UserRepos username={user.login} />}
+            </Route>
+            <Route path={`/users/${username}/followers`}>
+              {user && <UserList endpoint={`/users/${user.login}/followers`} />}
             </Route>
           </Switch>
         </Content>
