@@ -2,10 +2,16 @@ import { useEffect, useState } from 'react';
 import { FiClock, FiLink, FiStar } from 'react-icons/fi';
 import { CgGitFork } from 'react-icons/cg';
 import { format, parseISO } from 'date-fns';
+import Loader from 'react-loader-spinner';
 
 import { api } from '../services/api';
 
-import { Container, Repository } from '../styles/components/UserRepos';
+import {
+  Container,
+  LoadingContainer,
+  Repository,
+} from '../styles/components/UserRepos';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 interface IUserReposProps {
   username: string;
@@ -38,9 +44,9 @@ export function UserRepos({ username }: IUserReposProps) {
 
   return (
     <Container>
-      {repos &&
+      {repos ? (
         repos.map(repo => (
-          <Repository>
+          <Repository key={repo.id}>
             <div className="card-header">
               <h3>{repo.name}</h3>
               <a href={repo.html_url} target="_blank" rel="noreferrer">
@@ -64,7 +70,17 @@ export function UserRepos({ username }: IUserReposProps) {
               </span>
             </div>
           </Repository>
-        ))}
+        ))
+      ) : (
+        <LoadingContainer>
+          <Loader
+            type="MutatingDots"
+            color="#00BFFF"
+            height={100}
+            width={100}
+          />
+        </LoadingContainer>
+      )}
     </Container>
   );
 }

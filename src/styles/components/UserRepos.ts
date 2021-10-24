@@ -83,3 +83,11 @@ export const Repository = styled.li`
     border-top: 1px solid rgb(33, 38, 45);
   }
 `;
+
+export const LoadingContainer = styled.div`
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
