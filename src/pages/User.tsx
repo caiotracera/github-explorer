@@ -42,7 +42,12 @@ export function User() {
           <nav>
             <FiChevronLeft size={20} onClick={() => history.goBack()} />
             <p>{username}</p>
-            <a href={user?.html_url} target="_blank" rel="noopener noreferrer">
+            <a
+              href={user?.html_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
               <FiGlobe size={20} />
             </a>
           </nav>

@@ -1,28 +1,38 @@
 import { useEffect, useState } from 'react';
-import { FiLink, FiStar } from 'react-icons/fi';
+import { FiClock, FiLink, FiStar } from 'react-icons/fi';
 import { CgGitFork } from 'react-icons/cg';
-import { Container, Repository } from '../styles/components/UserRepos';
+import { format, parseISO } from 'date-fns';
+
 import { api } from '../services/api';
+
+import { Container, Repository } from '../styles/components/UserRepos';
 
 interface IUserReposProps {
   username: string;
 }
 
-interface IReposProps {
+interface IRepoProps {
   id: number;
   name: string;
   description: string;
   html_url: string;
   forks: number;
   stargazers_count: number;
+  pushed_at: string;
+  formatedDate: string;
 }
 
 export function UserRepos({ username }: IUserReposProps) {
-  const [repos, setRepos] = useState<IReposProps[]>();
+  const [repos, setRepos] = useState<IRepoProps[]>();
 
   useEffect(() => {
     api.get(`/users/${username}/repos`).then(({ data }) => {
-      setRepos(data);
+      const allRepos = (data as IRepoProps[]).map((repo: IRepoProps) => ({
+        ...repo,
+        formatedDate: format(parseISO(repo.pushed_at), 'dd/MM/yyyy'),
+      }));
+
+      setRepos(allRepos);
     });
   }, [username]);
 
@@ -47,6 +57,10 @@ export function UserRepos({ username }: IUserReposProps) {
               <span>
                 <FiStar size={15} />
                 {repo.stargazers_count}
+              </span>
+              <span>
+                <FiClock size={15} />
+                {repo.formatedDate}
               </span>
             </div>
           </Repository>
