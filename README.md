@@ -14,7 +14,7 @@
   <a href="https://www.linkedin.com/in/caiotracera/">
     <img alt="Made by caiotracera" src="https://img.shields.io/badge/made%20by-caiotracera-%230172B3?color=0a0e12">
   </a>
-
+  <br />
   <a href="https://github.com/caiotracera/github-explorer/commits/master">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/caiotracera/github-explorer?color=0a0e12">
   </a>
